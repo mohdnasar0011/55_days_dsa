@@ -1,1 +1,28 @@
+import java.util.HashMap;
 
+class Solution {
+    public int maxProfit(int[] prices) {
+        if (prices == null || prices.length < 2) {
+            return 0;
+        }
+
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("minPrice", prices[0]);
+        map.put("maxProfit", 0);
+
+        for (int i = 1; i < prices.length; i++) {
+            int currentPrice = prices[i];
+
+            if (currentPrice < map.get("minPrice")) {
+                map.put("minPrice", currentPrice);
+            } else {
+                int currentProfit = currentPrice - map.get("minPrice");
+                if (currentProfit > map.get("maxProfit")) {
+                    map.put("maxProfit", currentProfit);
+                }
+            }
+        }
+
+        return map.get("maxProfit");
+    }
+}
