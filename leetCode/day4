@@ -15,6 +15,5 @@ class Solution {
             result[k] = prefix[k] * suffix[k];
         }
         return result;
-
     }
 }
